@@ -1,5 +1,60 @@
 package voting.system;
 
+  /**
+   * Creates a new multipart POST HTTP request for a specified URL string
+   *
+   * @param urlString the string representation of the URL to send request to
+   * @throws IOException
+   */
+  public ClientHttpRequest(String urlString) throws IOException {
+    this(new URL(urlString));
+  }
+
+
+  private void postCookies() {
+    StringBuffer cookieList = new StringBuffer();
+
+    for (Iterator i = cookies.entrySet().iterator(); i.hasNext();) {
+      Map.Entry entry = (Map.Entry)(i.next());
+      cookieList.append(entry.getKey().toString() + "=" + entry.getValue());
+
+      if (i.hasNext()) {
+        cookieList.append("; ");
+      }
+    }
+    if (cookieList.length() > 0) {
+      connection.setRequestProperty("Cookie", cookieList.toString());
+    }
+  }
+
+  /**
+   * adds a cookie to the requst
+   * @param name cookie name
+   * @param value cookie value
+   * @throws IOException
+   */
+  public void setCookie(String name, String value) throws IOException {
+    cookies.put(name, value);
+  }
+
+  /**
+   * adds cookies to the request
+   * @param cookies the cookie "name-to-value" map
+   * @throws IOException
+   */
+  public void setCookies(Map cookies) throws IOException {
+    if (cookies == null) return;
+    this.cookies.putAll(cookies);
+  }
+
+  /**
+   * adds cookies to the request
+   * @param cookies array of cookie names and values (cookies[2*i] is a name, cookies[2*i + 1] is a value)
+   * @throws IOException
+   */
+  public void setCookies(String[] cookies) throws IOException {
+    if (cookies == null) return;
+    for (i
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
