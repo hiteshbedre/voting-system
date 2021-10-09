@@ -7,6 +7,14 @@ package voting.system;
  */
 
 
+migrations.RemoveField(
+            model_name='patientregistration',
+            name='aadhar_no',
+        ),
+        migrations.AlterField(
+            model_name='facilityrelatedsummary',
+
+
 import java.rmi.server.*;
 import java.rmi.RemoteException;
 import java.sql.Connection;
