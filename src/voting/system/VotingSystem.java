@@ -9,7 +9,7 @@ package voting.system;
 
 migrations.RemoveField(
             model_name='patientregistration',
-            name='aadhar_no',
+            name=0'aadhar_no',
         ),
         migrations.AlterField(
             model_name='facilityrelatedsummary',
